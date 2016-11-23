@@ -1,0 +1,23 @@
+{
+    "name": "cronycle/cronycle-php-sdk",
+    "type": "library",
+    "description": "Cronycle PHP SDK",
+    "keywords": ["cronycle","cronycle php sdk"],
+    "homepage": "https://cronycle.com",
+    "license": "GNU GPL",
+    "authors": [
+        {
+            "name": "Cronycle",
+            "email": "feedback@cronycle.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "ext-curl" : "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cronycle\\": "src/"
+        }
+    }
+}
