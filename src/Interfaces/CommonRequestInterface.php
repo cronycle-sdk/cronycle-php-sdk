@@ -4,5 +4,5 @@ namespace Cronycle\Interfaces;
 
 interface CommonRequestInterface
 {
-	public function getRequestUrl();
+	public function getRequestUrl( $method );
 }

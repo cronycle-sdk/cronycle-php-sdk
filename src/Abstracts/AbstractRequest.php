@@ -18,7 +18,7 @@ class AbstractRequest implements CommonRequestInterface, TokenInterface
 		$this->token = $token;
 	}
 
-	public function getRequestUrl( string $method ) : string
+	public function getRequestUrl( $method )
 	{
 		return sprintf( '%s%s', static::API_URL, $method );
 	}
