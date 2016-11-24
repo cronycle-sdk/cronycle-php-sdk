@@ -2,9 +2,9 @@
 
 namespace Cronycle\Abstracts;
 
-use Cronycle\Interfaces\TokenInterface;
+use Cronycle\Interfaces\{CommonRequestInterface,TokenInterface};
 
-class AbstractRequest implements TokenInterface
+class AbstractRequest implements CommonRequestInterface, TokenInterface
 {
 	protected $token;
 
@@ -16,5 +16,15 @@ class AbstractRequest implements TokenInterface
 	public function setToken( $token )
 	{
 		$this->token = $token;
+	}
+
+	protected function getRequestUrl( string $method ) : string
+	{
+		return sprintf( '%s%s', static::API_URL, $method );
+	}
+
+	protected function getAuthorizationHeader()
+	{
+		return 'Authorization: Token auth_token='.$this->getToken();
 	}
 }

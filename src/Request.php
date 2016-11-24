@@ -13,16 +13,6 @@ final class Request extends AbstractRequest
 		$this->setToken( $token );
 	}
 
-	private function getApiUrl( string $method ) : string
-	{
-		return sprintf( '%s%s', self::API_URL, $method );
-	}
-
-	private function getAuthorizationHeader()
-	{
-		return 'Authorization: Token auth_token='.$this->getToken();
-	}
-
 	public function logIn( string $email, string $password )
 	{
 		$params = [
@@ -32,7 +22,7 @@ final class Request extends AbstractRequest
 			],
 		];
 
-		$ch = curl_init( $this->getApiUrl( '/v3/sign_in.json' ) );
+		$ch = curl_init( $this->getRequestUrl( '/v3/sign_in.json' ) );
 		curl_setopt_array( $ch, [
 			CURLOPT_POST	        => count( $params ),
 			CURLOPT_POSTFIELDS	    => json_encode( $params ),
@@ -49,7 +39,7 @@ final class Request extends AbstractRequest
 
 	public function logOut()
 	{
-		$ch = curl_init( $this->getApiUrl( '/v3/sign_out.json' ) );
+		$ch = curl_init( $this->getRequestUrl( '/v3/sign_out.json' ) );
 		curl_setopt_array( $ch, [
 			CURLOPT_CUSTOMREQUEST   => 'DELETE',
 			CURLOPT_HTTPHEADER 		=> [
@@ -71,7 +61,7 @@ final class Request extends AbstractRequest
 	{
 		$this->authenticate();
 
-		$ch = curl_init( $this->getApiUrl( $method ) );
+		$ch = curl_init( $this->getRequestUrl( $method ) );
 		curl_setopt_array( $ch, [
 			CURLOPT_RETURNTRANSFER  => true,
 			CURLOPT_HTTPHEADER 		=> [
@@ -90,7 +80,7 @@ final class Request extends AbstractRequest
 	{
 		$this->authenticate();
 
-		$ch = curl_init( $this->getApiUrl( $method ) );
+		$ch = curl_init( $this->getRequestUrl( $method ) );
 		curl_setopt_array( $ch, [
 			CURLOPT_POST	        => count( $params ),
 			CURLOPT_POSTFIELDS	    => json_encode( $params ),
