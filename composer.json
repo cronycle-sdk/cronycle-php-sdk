@@ -4,7 +4,6 @@
     "description": "Cronycle PHP SDK",
     "keywords": ["cronycle","cronycle php sdk"],
     "homepage": "https://cronycle.com",
-    "license": "GNU GPL",
     "authors": [
         {
             "name": "Cronycle",
