@@ -13,12 +13,12 @@ final class Api
 		$this->request = new Request( $token );
 	}
 
-	public function logIn( string $email, string $password )
+	public function logIn( $email, $password )
 	{
 		return $this->request->login( $email, $password );
 	}
 
-	public function useAccount( string $token )
+	public function useAccount( $token )
 	{
 		$this->request->setToken( $token );
 	}
@@ -33,13 +33,13 @@ final class Api
 		return $this->request->queryResource( '/v5/topic_boards/' );
 	}
 
-	public function getBoardDetails( int $id )
+	public function getBoardDetails( $id )
 	{
 		return $this->request->queryResource( sprintf( '/v5/topic_boards/%d', $id ) );
 	}
 
-	public function getBoardArticles( int $id )
+	public function getBoardArticles( $id, $params = [] )
 	{
-		return $this->request->queryResource( sprintf( '/v5/topic_boards/%d/tiles', $id ) );
+		return $this->request->queryResource( sprintf( '/v5/topic_boards/%d/tiles', $id ), $params );
 	}
 }

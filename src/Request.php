@@ -57,11 +57,11 @@ final class Request extends AbstractRequest
 			throw new \Exception( 'Authentication failed...', 403 );
 	}
 
-	public function queryResource( string $method )
+	public function queryResource( string $method, array $params = [] )
 	{
 		$this->authenticate();
 
-		$ch = curl_init( $this->getRequestUrl( $method ) );
+		$ch = curl_init( $this->getRequestUrl( $method, $params ) );
 		curl_setopt_array( $ch, [
 			CURLOPT_RETURNTRANSFER  => true,
 			CURLOPT_HTTPHEADER 		=> [
