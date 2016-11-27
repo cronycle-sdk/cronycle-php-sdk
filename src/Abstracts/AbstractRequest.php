@@ -20,7 +20,7 @@ class AbstractRequest implements CommonRequestInterface, TokenInterface
 
 	public function getRequestUrl( $method, $params = [] )
 	{
-		$queryString = isset( $params[0] ) ? '?'.http_build_query( $params ) : '';
+		$queryString = !empty( $params ) ? '?'.http_build_query( $params ) : '';
 		return sprintf( '%s%s%s', static::API_URL, $method, $queryString );
 	}
 
