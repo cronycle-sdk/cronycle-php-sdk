@@ -126,7 +126,7 @@ __Response:__
 boardArticlesList - array  
   
 <pre>
-$articles = $API->getBoardArticles( $boardId );
+$articles = $API->getBoardArticles( $boardId, $params );
 </pre>
 
 
