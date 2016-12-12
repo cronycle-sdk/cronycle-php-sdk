@@ -57,7 +57,7 @@ final class Request extends AbstractRequest
 			throw new \Exception( 'Authentication failed...', 403 );
 	}
 
-	public function queryResource( string $method, array $params = [] )
+	public function queryResource( $method, $params = [] )
 	{
 		$this->authenticate();
 
@@ -76,7 +76,7 @@ final class Request extends AbstractRequest
 		return json_decode( $result, true );
 	}
 
-	public function requestResource( string $method, array $params )
+	public function requestResource( $method, $params )
 	{
 		$this->authenticate();
 

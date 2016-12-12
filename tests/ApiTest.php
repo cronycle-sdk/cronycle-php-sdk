@@ -22,7 +22,7 @@ class ApiTest extends \PHPUnit_Framework_TestCase
 	{
 		// Log in
 		$accounts = $this->api->logIn( self::DEMO_ACCOUNT['email'], self::DEMO_ACCOUNT['password'] );
-		$token = $accounts[0]['auth_token'] ?? null;
+		$token = isset( $accounts[0]['auth_token'] ) ? $accounts[0]['auth_token'] : null;
 		$this->assertNotEquals( null, $token );
 
 		if ( !$token ) return;
@@ -30,14 +30,14 @@ class ApiTest extends \PHPUnit_Framework_TestCase
 
 		// Get boards
 		$boards = $this->api->getBoardsList();
-		$boardId = $boards[0]['id'] ?? null;
+		$boardId = isset( $boards[0]['id'] ) ? $boards[0]['id'] : null;
 		$this->assertNotEquals( null, $boardId );
 
 		if ( !$boardId ) return;
 
 		// Get board details
 		$board = $this->api->getBoardDetails( $boardId );
-		$this->assertNotEquals( null, $board['topic_board']['id'] ?? null );
+		$this->assertNotEquals( null, isset( $board['topic_board']['id'] ) ? $board['topic_board']['id'] : null );
 
 		// Get board articles
 		$articles = $this->api->getBoardArticles( $boardId );
