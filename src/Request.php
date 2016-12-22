@@ -13,7 +13,7 @@ final class Request extends AbstractRequest
 		$this->setToken( $token );
 	}
 
-	public function logIn( string $email, string $password )
+	public function logIn( $email, $password )
 	{
 		$params = [
 			'user' => [

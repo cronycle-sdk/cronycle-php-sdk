@@ -2,7 +2,8 @@
 
 namespace Cronycle\Abstracts;
 
-use Cronycle\Interfaces\{CommonRequestInterface,TokenInterface};
+use Cronycle\Interfaces\CommonRequestInterface;
+use Cronycle\Interfaces\TokenInterface;
 
 class AbstractRequest implements CommonRequestInterface, TokenInterface
 {
