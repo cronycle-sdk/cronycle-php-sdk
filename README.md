@@ -65,6 +65,31 @@ $accountsDetails - array
 $accounts = $API->logIn( 'email', 'password' );
 </pre>
 
+###Sign in with Google - will trigger redirect to social provider sign in and return response to callback url: 
+ 
+__Parameters:__  
+callback - string, requried, callback url
+  
+__Response:__  
+redirect 
+ 
+<pre>
+$API->logInWithGoogle( 'callback' );
+</pre>
+
+###Sign in with Twitter - will trigger redirect to social provider sign in and return response to callback url: 
+ 
+__Parameters:__  
+callback - string, requried, callback url
+  
+__Response:__  
+redirect 
+ 
+<pre>
+$API->logInWithTwitter( 'callback' );
+</pre>
+
+
 ###Log out: 
  
 __Parameters:__  
