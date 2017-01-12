@@ -58,7 +58,7 @@ final class Api
 	 */
 	public function postAuth( $provider, $ticket )
 	{
-		return $this->postAuth( $provider, $ticket );
+		return $this->request->postAuth( $provider, $ticket );
 	}
 
 	/**
