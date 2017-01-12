@@ -3,6 +3,7 @@
 namespace Cronycle;
 
 use Cronycle\Abstracts\AbstractRequest;
+use Cronycle\Auth\SocialSignIn;
 
 final class Request extends AbstractRequest
 {
@@ -57,8 +58,8 @@ final class Request extends AbstractRequest
 	 */
 	public function logInSocial( $provider, $callback )
 	{
-		if ( !in_array( $provider, [ 'google_oauth2', 'twitter2' ] ) )
-			throw new \Exception( 'Not supported social sign in...', 400 );
+		if ( !SocialSignIn::validateProvider( $provider ) )
+			throw new \Exception( 'Not supported social sign in provider...', 400 );
 
 		$ch = curl_init( $this->getRequestUrl( sprintf( '/auth/%s?%s=%s', $provider, $provider == 'twitter2' ? 'd' : 'state', $callback ) ) );
 		curl_setopt_array( $ch, [
@@ -78,6 +79,9 @@ final class Request extends AbstractRequest
 	 */
 	public function postAuth( $provider, $ticket )
 	{
+		if ( !SocialSignIn::validateProvider( $provider ) )
+			throw new \Exception( 'Not supported social sign in provider...', 400 );
+
 		$ch = curl_init( $this->getRequestUrl( sprintf( '/v5/auth/%s/post-auth?ticket=%s', $provider, $ticket ) ) );
 		curl_setopt_array( $ch, [
 			CURLOPT_RETURNTRANSFER => true,
