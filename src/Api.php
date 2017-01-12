@@ -50,6 +50,18 @@ final class Api
 	}
 
 	/**
+	 * Method provides post auth validation for social sign in
+	 *
+	 * @param $provider
+	 * @param $ticket
+	 * @return mixed
+	 */
+	public function postAuth( $provider, $ticket )
+	{
+		return $this->postAuth( $provider, $ticket );
+	}
+
+	/**
 	 * Method allows to set auth token for further api requests
 	 *
 	 * @param $token

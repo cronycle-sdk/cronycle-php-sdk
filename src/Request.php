@@ -71,6 +71,25 @@ final class Request extends AbstractRequest
 	}
 
 	/**
+	 * Method provides post auth validation for social sign in
+	 *
+	 * @param $provider
+	 * @param $ticket
+	 */
+	public function postAuth( $provider, $ticket )
+	{
+		$ch = curl_init( $this->getRequestUrl( sprintf( '/v5/auth/%s/post-auth?ticket=%s', $provider, $ticket ) ) );
+		curl_setopt_array( $ch, [
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_FOLLOWLOCATION => true,
+		] );
+		$response = curl_exec( $ch );
+		curl_close( $ch );
+
+		return json_decode( $response, true );
+	}
+
+	/**
 	 * Method allows to log user our from the system
 	 */
 	public function logOut()
