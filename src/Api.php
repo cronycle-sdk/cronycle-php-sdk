@@ -88,7 +88,7 @@ final class Api
 	 */
 	public function getBoardsList()
 	{
-		return $this->request->queryResource( '/v5/topic_boards/' );
+		return $this->request->queryResource( '/v6/topic_boards/' );
 	}
 
 	/**
