@@ -1,4 +1,4 @@
-# CRONYCLE PHP SDK (v1.0-alpha)
+# CRONYCLE PHP SDK v1.0.0
 
 
 Cronycle php sdk provides basic functionality for communication with Cronycle API.
