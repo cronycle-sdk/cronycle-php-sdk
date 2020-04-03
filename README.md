@@ -166,3 +166,7 @@ __Password__: lifeafterboards2016
 ## 4. Skeleton application
 
 https://github.com/cronycle/cronycle-php-sdk-demo
+
+## 5. Dependents
+
+- Cronycle Board Exporter (https://github.com/cronycle/exporter)
